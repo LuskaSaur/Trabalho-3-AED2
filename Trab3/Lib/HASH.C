@@ -8,7 +8,7 @@ hash* criaHash(int tableSize){
   hash* h = (hash*) malloc(sizeof(hash));
   if(h != NULL){
     h->tableSize = tableSize;
-    h->item = (Produto*) malloc(sizeof(Produto));
+    h->item = (Produto**) malloc(sizeof(Produto));
     if(h->item ==  NULL){
       free(h);
       return NULL;
@@ -60,13 +60,13 @@ int insereHash_enderAberto(hash* h, Produto *p){
   for(i=0;i<h->tableSize;i++){
     newPos = sondagemLinear(pos,i, h->tableSize);
     if(h->item[newPos] == NULL){
-      Produto *new;
-      new = (Produto*) malloc(sizeof(Produto));
-      if(new == NULL){
+      Produto* sdsd;
+      sdsd = (Produto*) malloc(sizeof(Produto));
+      if(sdsd == NULL){
         return 0;
       }
-      new = p;
-      h->item[newPos] = new;
+      sdsd = p;
+      h->item[newPos] = sdsd;
       h->qtd++;
       return 1;
     }
